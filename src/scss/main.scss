@@ -35,6 +35,7 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
+/*** Header ***/
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -70,8 +71,14 @@ body {
   width: 200px;
 }
 
+.fa.fa-user-circle {
+  margin-right: 5px;
+}
+/*** End Header ***/
+
+/*** Hero ***/
 .hero {
-  background-image: url('../img/bank-tree.jpeg');
+  background-image: url('../assets/img/bank-tree.jpeg');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -122,6 +129,7 @@ body {
     font-size: 1.2rem;
   }
 }
+/*** End Hero ***/
 
 .features {
   display: flex;
