@@ -1,11 +1,21 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/authSlice';
 import logo from '../assets/img/argentBankLogo.png';
 
 function Header() {
-  // À l'Étape 2, cette variable viendra directement du Store Redux
-  const isConnected = false;
-  const userName = "Tony";
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // On lit l'état d'authentification et les infos utilisateur dans Redux
+  const { isConnected, user } = useSelector((state) => state.auth);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout()); // Vide le Store Redux
+    navigate('/');      // Redirige vers la page d'accueil
+  };
+
   return (
     <nav className="main-nav">
       <Link className="main-nav-logo" to="/">
@@ -18,16 +28,16 @@ function Header() {
       </Link>
       <div>
         {isConnected ? (
-          <>
+          <div className="main-nav-item-wrapper">
             <Link className="main-nav-item" to="/user">
               <i className="fa fa-user-circle"></i>
-              {userName}
+              {user ? user.firstName : 'User'}
             </Link>
-            <Link className="main-nav-item" to="/">
+            <a className="main-nav-item" href="#" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>
               Sign Out
-            </Link>
-          </>
+            </a>
+          </div>
         ) : (
           <Link className="main-nav-item" to="/signin">
             <i className="fa fa-user-circle"></i>

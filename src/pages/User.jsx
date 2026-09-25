@@ -1,14 +1,22 @@
+import { useSelector } from 'react-redux';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import AccountCard from '../components/AccountCard';
 
 function User() {
+  // On récupère l'utilisateur stocké dans le state Redux
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <div>
       <Header />
       <main className="main bg-dark">
         <div className="header">
-          <h1>Welcome back<br />Tony Stark!</h1>
+          <h1>
+            Welcome back
+            <br />
+            {user ? `${user.firstName} ${user.lastName} !` : `User !`}
+          </h1>
           <button className="edit-button">Edit Name</button>
         </div>
         <h2 className="sr-only">Accounts</h2>

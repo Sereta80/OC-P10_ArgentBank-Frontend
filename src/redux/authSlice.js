@@ -28,15 +28,11 @@ export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (token, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${API_URL}/user/profile`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${API_URL}/user/profile`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response.data.body; // Retourne { id, email, firstName, lastName }
     } catch (error) {
       return rejectWithValue(
