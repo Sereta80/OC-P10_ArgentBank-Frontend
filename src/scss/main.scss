@@ -1,11 +1,19 @@
+/*** Variables ***/
+// Colors var
+$text-color: #2c3e50;
+$bg-dark: #12002b;
+/*** End Variables ***/
+
+/*** Global (html, body, layout) ***/
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $text-color;
 }
 
+// Sticky footer: body fills the full height and .main stretches
 body {
   margin: 0;
   display: flex;
@@ -13,14 +21,21 @@ body {
   min-height: 100vh;
 }
 
+// Main page container (SignIn, User)
 .main {
+  padding-top: 10px;
+  padding-bottom: 80px;
   flex: 1;
 }
 
+// Dark background for SignIn and User pages
 .bg-dark {
-  background-color: #12002b;
+  background-color: $bg-dark;
 }
+/*** End Global ***/
 
+/*** Utilities ***/
+// Visually hidden text, still read by screen readers (Header, Home, User)
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -35,7 +50,22 @@ body {
   white-space: nowrap !important; /* 3 */
 }
 
-/*** Header ***/
+// Base style shared by all buttons
+button {
+  border: unset;
+  border-color: unset;
+  border-radius: 3px;
+  padding: 20px 30px;
+  font-size: 16px;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+/*** End Utilities ***/
+
+/*** Header (components/Header.jsx) ***/
+// Navigation bar: logo on the left, links on the right
 .main-nav {
   display: flex;
   justify-content: space-between;
@@ -52,15 +82,23 @@ body {
   color: #42b983;
 }
 
+// "Sign In" / user name / "Sign Out" links
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+
+  // Font Awesome icons in front of the links
+  .fa.fa-user-circle,
+  .fa.fa-sign-out {
+    margin-right: 5px;
+  }
 }
 
 .main-nav-item:hover {
   text-decoration: underline;
 }
 
+// Argent Bank logo
 .main-nav-logo {
   display: flex;
   align-items: center;
@@ -71,12 +109,11 @@ body {
   width: 200px;
 }
 
-.fa.fa-user-circle {
-  margin-right: 5px;
-}
+
 /*** End Header ***/
 
-/*** Hero ***/
+/*** Hero (pages/Home.jsx) ***/
+// Banner with the background image
 .hero {
   background-image: url('../assets/img/bank-tree.jpeg');
   background-position: 0 -50px;
@@ -86,6 +123,7 @@ body {
   position: relative;
 }
 
+// White box containing the tagline
 .hero-content {
   position: relative;
   top: 2rem;
@@ -94,6 +132,7 @@ body {
   padding: 2rem;
   text-align: left;
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .hero-content .subtitle {
@@ -107,6 +146,7 @@ body {
   font-size: 0.9rem;
 }
 
+// Desktop: box positioned on the right side of the banner
 @media (min-width: 920px) {
   .hero {
     height: 400px;
@@ -131,6 +171,8 @@ body {
 }
 /*** End Hero ***/
 
+/*** Features (pages/Home.jsx + components/FeatureItem.jsx) ***/
+// Container of the 3 features: column on mobile, row on desktop
 .features {
   display: flex;
   flex-direction: column;
@@ -142,6 +184,7 @@ body {
   }
 }
 
+// Round icon with green border
 .feature-icon {
   width: 100px;
   border: 10px solid #00bc77;
@@ -160,7 +203,10 @@ body {
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+/*** End Features ***/
 
+/*** Sign In (pages/SignIn.jsx) ***/
+// Green "Sign In" form button
 .sign-in-button {
   display: block;
   width: 100%;
@@ -173,8 +219,10 @@ body {
   color: #fff;
 }
 
+// White form card (also used by pages/Error404.jsx)
 .sign-in-content {
   box-sizing: border-box;
+  border-radius: 5px;
   background-color: white;
   width: 300px;
   margin: 0 auto;
@@ -182,10 +230,12 @@ body {
   padding: 2rem;
 }
 
+// User icon above the title
 .sign-in-icon {
   font-size: 5rem;
 }
 
+// "Remember me" checkbox
 .input-remember {
   display: flex;
 }
@@ -193,12 +243,17 @@ body {
 .input-remember label {
   margin-left: 0.25rem;
 }
+/*** End Sign In ***/
 
+/*** Form inputs (pages/SignIn.jsx + pages/User.jsx) ***/
+// Label + input field block
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   text-align: left;
   margin-bottom: 1rem;
+  // gap: 10px;
 }
 
 .input-wrapper label {
@@ -209,7 +264,9 @@ body {
   padding: 5px;
   font-size: 1.2rem;
 }
+/*** End Form inputs ***/
 
+/*** Footer (components/Footer.jsx) ***/
 .footer {
   display: flex;
   justify-content: center;
@@ -221,7 +278,10 @@ body {
   margin: 0;
   padding: 0;
 }
+/*** End Footer ***/
 
+/*** Account card (components/AccountCard.jsx) ***/
+// Bank account card: column on mobile, row on desktop
 .account {
   display: flex;
   justify-content: space-between;
@@ -235,18 +295,22 @@ body {
   box-sizing: border-box;
   text-align: left;
   margin-bottom: 2rem;
+  border-radius: 5px;
 }
 
+// Account balance
 .account-amount {
   margin: 0;
   font-size: 2.5rem;
   font-weight: bold;
 }
 
+// Label below the balance ("Available Balance"...)
 .account-amount-description {
   margin: 0;
 }
 
+// Account name ("Argent Bank Checking (x8349)"...)
 .account-title {
   margin: 0;
   padding: 0;
@@ -254,24 +318,31 @@ body {
   font-weight: normal;
 }
 
+// Card columns (info on the left, "cta" chevron on the right)
 .account-content-wrapper {
   width: 100%;
   flex: 1;
 }
+/*** End Account card ***/
 
+/*** User page (pages/User.jsx) ***/
+// "Edit Name" / "Save" / "Cancel" buttons
 .edit-button {
-  border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
   font-weight: bold;
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
+// "Welcome back" heading + name edit form
 .header {
   color: #fff;
   margin-bottom: 2rem;
 }
 
+// "View transactions" button (currently unused: replaced by the chevron in AccountCard)
 .transaction-button {
   display: block;
   width: 100%;
@@ -283,12 +354,16 @@ body {
   background-color: #00bc77;
   color: #fff;
 }
+/*** End User page ***/
 
+/*** Responsive: Account card (min-width 720px) ***/
 @media (min-width: 720px) {
+  // Account card displayed as a row
   .account {
     flex-direction: row;
   }
 
+  // Chevron column only takes the space it needs
   .account-content-wrapper.cta {
     flex: 0;
   }
@@ -297,3 +372,4 @@ body {
     width: 200px;
   }
 }
+/*** End Responsive ***/
