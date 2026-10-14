@@ -3,9 +3,9 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3001/api/v1';
 
-// --- LES THUNKS (Les livreurs d'API) ---
+// --- THUNKS ---
 
-// 1. Thunk de connexion : envoie email/password et récupère le Token
+// 1. Connection thunk : send email/password et get Token
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async ({ email, password }, { rejectWithValue }) => {
@@ -14,7 +14,7 @@ export const loginUser = createAsyncThunk(
         email,
         password,
       });
-      return response.data.body.token; // Donnée transmise au 'fulfilled'
+      return response.data.body.token; // Data transmitted to the 'fulfilled' state
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || 'Identifiants incorrects'
@@ -23,7 +23,7 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// 2. Thunk de profil : envoie le Token pour récupérer les infos utilisateur
+// 2. Profile thunk : send Token to get user infos
 export const fetchUserProfile = createAsyncThunk(
   'auth/fetchUserProfile',
   async (token, { rejectWithValue }) => {
@@ -33,7 +33,7 @@ export const fetchUserProfile = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      return response.data.body; // Retourne { id, email, firstName, lastName }
+      return response.data.body; // Return { id, email, firstName, lastName }
     } catch (error) {
       return rejectWithValue(
         error.response?.data?.message || 'Impossible de charger le profil'
@@ -42,7 +42,40 @@ export const fetchUserProfile = createAsyncThunk(
   }
 );
 
-// --- LE SLICE (Le tiroir de données) ---
+// 3. Thunk to modify user name (PUT method)
+export const updateUserProfile = createAsyncThunk(
+  'auth/updateUserProfile',
+  async (newUserName, { getState, rejectWithValue }) => {
+    try {
+      const state = getState();
+      const token = state.auth.token;
+      const currentUser = state.auth.user;
+
+      const response = await axios.put(
+        `${API_URL}/user/profile`,
+        {
+          userName: newUserName,
+          firstName: currentUser?.firstName,
+          lastName: currentUser?.lastName,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return response.data.body; // Retourne l'objet user complet mis à jour par l'API
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.message || 'Échec de la mise à jour du username'
+      );
+    }
+  }
+);
+
+// --- SLICE ---
 
 const authSlice = createSlice({
   name: 'auth',
@@ -54,7 +87,7 @@ const authSlice = createSlice({
     error: null,
   },
   reducers: {
-    // Action synchrone de déconnexion
+    // Synchronous disconnection action
     logout: (state) => {
       state.token = null;
       state.isConnected = false;
@@ -65,24 +98,30 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Réponses du Thunk loginUser
+      // Responses from the loginUser thunk
       .addCase(loginUser.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.token = action.payload; // action.payload contient le Token
+        state.token = action.payload; // action.payload contains Token
         state.isConnected = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload; // Message d'erreur
+        state.error = action.payload; // Error Message
       })
-      // Réponses du Thunk fetchUserProfile
+
+      // Responses from the fetchUserProfile Thunk
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
-        state.user = action.payload; // Stocke les infos (firstName, lastName)
-      });
+        state.user = action.payload; // Store infos (firstName, lastName)
+      })
+
+      // Responses from the updateUserProfile Thunk
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.user = action.payload; // On remplace par le profil mis à jour renvoyé par l'API
+      })
   },
 });
 
