@@ -31,7 +31,7 @@ function Header() {
           <div className="main-nav-item-wrapper">
             <Link className="main-nav-item" to="/user">
               <i className="fa fa-user-circle"></i>
-              {user ? user.firstName : 'User'}
+              {user ? user.userName || user.firstName : 'User'}
             </Link>
             <a className="main-nav-item" href="#" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>

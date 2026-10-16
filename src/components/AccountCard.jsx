@@ -7,7 +7,7 @@ function AccountCard({ title, amount, description }) {
         <p className="account-amount-description">{description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        <button className="transaction-button">View transactions</button>
+        <img src="../src/assets/img/chevron.svg" alt="" />
       </div>
     </section>
   );
