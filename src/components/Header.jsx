@@ -12,8 +12,8 @@ function Header() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout()); // Vide le Store Redux
     navigate('/');      // Redirige vers la page d'accueil
+    dispatch(logout()); // Vide le Store Redux
   };
 
   return (
