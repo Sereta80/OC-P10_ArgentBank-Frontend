@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import User from './pages/User';
 import Error404 from './pages/Error404';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </Router>
