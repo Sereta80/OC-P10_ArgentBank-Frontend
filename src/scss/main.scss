@@ -338,6 +338,13 @@ button {
   width: 100%;
   flex: 1;
 }
+
+// Chevron icon: the SVG has no width/height of its own, so it needs an explicit size
+.account-chevron {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
 /*** End Account card ***/
 
 /*** User page (pages/User.jsx) ***/
