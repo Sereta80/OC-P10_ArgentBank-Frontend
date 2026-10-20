@@ -1,4 +1,4 @@
-# Argent Bank – Front-end
+# 🏦 Argent Bank – Front-end
 
 Application bancaire en React réalisée dans le cadre du projet 10 de la formation **Intégrateur web** d'OpenClassrooms.
 
@@ -9,7 +9,7 @@ Application bancaire en React réalisée dans le cadre du projet 10 de la format
 <img width="600" alt="ArgentBank - Page Profil pour modifier le nom d'utilisateur" src="https://github.com/user-attachments/assets/239d12cd-6760-4391-b4f2-9ae8d72ae0c3" />
 <img width="600" alt="ArgentBank - Page d'erreur" src="https://github.com/user-attachments/assets/6bad1049-b095-4422-90c0-98a051448adf" />
 
-## Fonctionnalités
+## ✨ Fonctionnalités
 
 - Page d'accueil (`/`)
 - Connexion de l'utilisateur (`/login`) avec authentification par token JWT et message d'erreur en cas d'identifiants incorrects
@@ -19,7 +19,7 @@ Application bancaire en React réalisée dans le cadre du projet 10 de la format
 - Page 404 pour les URL inconnues
 - Interface responsive
 
-## Technologies
+## 🛠️ Technologies
 
 - [React](https://react.dev/) 19 et [Vite](https://vite.dev/)
 - [Redux Toolkit](https://redux-toolkit.js.org/) et React Redux (gestion du state global)
@@ -27,12 +27,12 @@ Application bancaire en React réalisée dans le cadre du projet 10 de la format
 - [Axios](https://axios-http.com/) (appels à l'API)
 - Sass (styles)
 
-## Prérequis
+## 📋 Prérequis
 
 - [Node.js](https://nodejs.org/) 20.19 ou supérieur et npm
 - Le back-end Argent Bank lancé en local sur `http://localhost:3001` : voir le dépôt [OC-P10_ArgentBank_Backend](https://github.com/Sereta80/OC-P10_ArgentBank_Backend)
 
-## Installation et lancement
+## 🚀 Installation et lancement
 
 1. Lancer d'abord le back-end (MongoDB et API) en suivant le README du dépôt back-end.
 2. Cloner ce dépôt et installer les dépendances :
@@ -51,7 +51,7 @@ npm run dev
 
 4. Ouvrir l'adresse affichée dans le terminal (par défaut `http://localhost:5173`).
 
-## Comptes de test
+## 👤 Comptes de test
 
 Ces comptes sont créés par le script `npm run populate-db` du back-end.
 
@@ -60,7 +60,7 @@ Ces comptes sont créés par le script `npm run populate-db` du back-end.
 | Tony Stark | `tony@stark.com` | `password123` |
 | Steve Rogers | `steve@rogers.com` | `password456` |
 
-## Structure du projet
+## 📁 Structure du projet
 
 ```
 src/
@@ -71,7 +71,7 @@ src/
 └── scss/         # Styles
 ```
 
-## Gestion du state avec Redux
+## 🔄 Gestion du state avec Redux
 
 - **Store** (`src/redux/store.js`) : créé avec `configureStore`, il contient le slice `auth`.
 - **Slice** (`src/redux/authSlice.js`) : il stocke le token, l'état de connexion, les informations de l'utilisateur, le statut des requêtes et les erreurs.
@@ -81,7 +81,11 @@ src/
   - `updateUserProfile` : `PUT /user/profile`, modifie le nom d'utilisateur.
 - **Action synchrone** : `logout`, qui vide les données d'authentification du store.
 
-## Green Code
+## 🌱 Green Code
 
 - Images converties en WebP et redimensionnées à leur taille d'affichage : de 220 Ko à 50 Ko au total (−77 %).
 - Éléments répétés découpés en composants réutilisables : `FeatureItem` pour les 3 colonnes de l'accueil, `AccountCard` pour les comptes bancaires.
+
+---
+
+*Séréta THAI - Étudiante Intégratrice Web chez OpenClassrooms 2026-2027*
