@@ -10,8 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/user" element={<ProtectedRoute><User /></ProtectedRoute>} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/profile" element={<ProtectedRoute><User /></ProtectedRoute>} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </Router>

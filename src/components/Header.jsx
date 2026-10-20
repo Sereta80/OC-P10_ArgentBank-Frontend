@@ -29,7 +29,7 @@ function Header() {
       <div>
         {isConnected ? (
           <div className="main-nav-item-wrapper">
-            <Link className="main-nav-item" to="/user">
+            <Link className="main-nav-item" to="/profile">
               <i className="fa fa-user-circle"></i>
               {user ? user.userName || user.firstName : 'User'}
             </Link>
@@ -39,7 +39,7 @@ function Header() {
             </a>
           </div>
         ) : (
-          <Link className="main-nav-item" to="/signin">
+          <Link className="main-nav-item" to="/login">
             <i className="fa fa-user-circle"></i>
             Sign In
           </Link>

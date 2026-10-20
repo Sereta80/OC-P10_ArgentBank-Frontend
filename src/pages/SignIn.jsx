@@ -34,7 +34,7 @@ function SignIn() {
   useEffect(() => {
     if (isConnected) {
       // 2. On redirige dès qu'on est connecté
-      navigate('/user');
+      navigate('/profile');
     }
   }, [isConnected, navigate]);
 
