@@ -92,6 +92,13 @@ button {
   .fa.fa-sign-out {
     margin-right: 5px;
   }
+
+  &-wrapper {
+    @media (max-width: 419px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .main-nav-item:hover {
