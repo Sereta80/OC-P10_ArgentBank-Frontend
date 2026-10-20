@@ -1,3 +1,5 @@
+import chevron from '../src/assets/img/chevron.svg';
+
 function AccountCard({ title, amount, description }) {
   return (
     <section className="account">
@@ -7,7 +9,7 @@ function AccountCard({ title, amount, description }) {
         <p className="account-amount-description">{description}</p>
       </div>
       <div className="account-content-wrapper cta">
-        {/* <img src="../src/assets/img/chevron.svg" alt="" /> */}
+        <img src={chevron} alt="" />
       </div>
     </section>
   );
