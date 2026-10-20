@@ -1,4 +1,4 @@
-import chevron from '../src/assets/img/chevron.svg';
+import chevron from '../assets/img/chevron.svg';
 
 function AccountCard({ title, amount, description }) {
   return (
