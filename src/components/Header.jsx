@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/authSlice';
-import logo from '../assets/img/argentBankLogo.png';
+import logo from '../assets/img/argentBankLogo.webp';
 
 function Header() {
   const dispatch = useDispatch();
@@ -12,8 +12,8 @@ function Header() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(logout()); // Vide le Store Redux
     navigate('/');      // Redirige vers la page d'accueil
+    dispatch(logout()); // Vide le Store Redux
   };
 
   return (

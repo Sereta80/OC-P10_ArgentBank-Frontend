@@ -2,9 +2,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import FeatureItem from '../components/FeatureItem';
 
-import iconChat from '../assets/img/icon-chat.png';
-import iconMoney from '../assets/img/icon-money.png';
-import iconSecurity from '../assets/img/icon-security.png';
+import iconChat from '../assets/img/icon-chat.webp';
+import iconMoney from '../assets/img/icon-money.webp';
+import iconSecurity from '../assets/img/icon-security.webp';
 
 function Home() {
   return (
@@ -15,7 +15,7 @@ function Home() {
           <section className="hero-content">
             <h2 className="sr-only">Promoted Content</h2>
             <p className="subtitle">No fees.</p>
-            <p class="subtitle">No minimum deposit.</p>
+            <p className="subtitle">No minimum deposit.</p>
             <p className="subtitle">High interest rates.</p>
             <p className="text">Open a savings account with Argent Bank today!</p>
           </section>

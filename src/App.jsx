@@ -7,7 +7,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <Router>
+    // useTransitions={false}: route changes are applied synchronously, in the same
+    // render as Redux updates (e.g. on logout, avoids ProtectedRoute redirecting first)
+    <Router useTransitions={false}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<SignIn />} />
