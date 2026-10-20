@@ -4,6 +4,11 @@ Application bancaire en React réalisée dans le cadre du projet 10 de la format
 
 **Phase 1 – Authentification de l'utilisateur** : connexion, accès au profil, modification du nom d'utilisateur et déconnexion, en communiquant avec l'API Argent Bank.
 
+<img width="600" alt="ArgentBank - Page d'accueil" src="https://github.com/user-attachments/assets/6992ef00-c14b-49e6-ae09-641d393c36b9" />
+<img width="600" alt="ArgentBank - Page de connexion" src="https://github.com/user-attachments/assets/bff4ac25-3825-4160-bfd2-20354838f1a2" />
+<img width="600" alt="ArgentBank - Page Profil pour modifier le nom d'utilisateur" src="https://github.com/user-attachments/assets/239d12cd-6760-4391-b4f2-9ae8d72ae0c3" />
+<img width="600" alt="ArgentBank - Page d'erreur" src="https://github.com/user-attachments/assets/6bad1049-b095-4422-90c0-98a051448adf" />
+
 ## Fonctionnalités
 
 - Page d'accueil (`/`)
